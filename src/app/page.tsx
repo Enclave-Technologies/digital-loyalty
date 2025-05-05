@@ -14,12 +14,7 @@ export default async function Home() {
                     <span className="font-bold text-xl">Perkz</span>
                 </div>
                 <div className="flex items-center gap-4">
-                    {/* <Link
-                        href="/login"
-                        className="text-sm text-muted-foreground hover:text-foreground"
-                    >
-                        Log in
-                    </Link> */}
+
                     <ModeToggle />
                 </div>
             </nav>

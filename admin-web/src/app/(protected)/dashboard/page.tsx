@@ -1,11 +1,8 @@
 import { UserButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
 
-export default async function DashboardPage() {
-    const { userId } = await auth();
+export default function DashboardPage() {
     return (
         <div className="p-6">
-            <pre>{JSON.stringify(userId)}</pre>
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-bold">Dashboard</h1>
                 <UserButton afterSignOutUrl="/" />

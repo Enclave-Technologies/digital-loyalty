@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ConvexClientProvider } from "@/providers/ConvexClientProviders";
+import {
+    ClerkProvider,
+    // SignInButton,
+    // SignUpButton,
+    // SignedIn,
+    // SignedOut,
+    // UserButton,
+} from "@clerk/nextjs";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,25 +33,27 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning className="h-full">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-screen-2xl mx-auto`}
-            >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="light"
-                    enableSystem
-                    disableTransitionOnChange
+        <ClerkProvider>
+            <html lang="en" suppressHydrationWarning className="h-full">
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-screen-2xl mx-auto`}
                 >
-                    <main className="flex flex-col min-h-screen">
-                        <div className="flex-grow flex-1">
-                            <ConvexClientProvider>
-                                {children}
-                            </ConvexClientProvider>
-                        </div>
-                    </main>
-                </ThemeProvider>
-            </body>
-        </html>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="light"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
+                        <main className="flex flex-col min-h-screen">
+                            <div className="flex-grow flex-1">
+                                <ConvexClientProvider>
+                                    {children}
+                                </ConvexClientProvider>
+                            </div>
+                        </main>
+                    </ThemeProvider>
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }

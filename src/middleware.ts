@@ -1,17 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export function middleware(request: NextRequest) {
-    // console.log("Middleware is running");
-    // console.log("Path:", request.nextUrl.pathname);
-    // console.log(request.headers);
+export default clerkMiddleware();
 
-    // Add your middleware here
-    return NextResponse.next();
-}
-
-// Optional: Configure which paths this middleware runs on
 export const config = {
-    // matcher: ["/dashboard/:path*", "/programs/:path*"],
-    // matcher: ["/((?!login|register).*)"],
-    matcher: ["/((?!/).*)"],
+    matcher: [
+        // Skip Next.js internals and all static files, unless found in search params
+        "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+        // Always run for API routes
+        "/(api|trpc)(.*)",
+    ],
 };
