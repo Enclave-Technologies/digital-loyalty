@@ -12,7 +12,7 @@ export default function Page() {
                         Access your Perkz dashboard
                     </p>
                 </div>
-                <SignIn />
+                <SignIn forceRedirectUrl={"/dashboard"} />
             </div>
         </div>
     );
