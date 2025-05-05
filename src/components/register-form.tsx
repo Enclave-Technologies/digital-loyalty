@@ -8,41 +8,33 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import Image from "next/image";
 import Link from "next/link";
-import { registerWithEmail } from "@/firebase/auth";
-import { useActionState, useEffect } from "react";
-import { useToast } from "@/hooks/use-toast";
+// import { useEffect } from "react";
+// import { useToast } from "@/hooks/use-toast";
 // import { ToastAction } from "./ui/toast";
 
 export function RegisterForm({
     className,
     ...props
 }: React.ComponentProps<"div">) {
-    const [state, registerAction] = useActionState(
-        registerWithEmail,
-        undefined
-    );
-    const { toast } = useToast();
+    // const { toast } = useToast();
 
-    useEffect(() => {
-        if (state?.success) {
-            toast({
-                title: "Registration Successful",
-                description:
-                    "Please check your email for further instructions.",
-                // action: <ToastAction altText="Dismiss">Dismiss</ToastAction>,
-            });
-        }
-    }, [state]);
+    // useEffect(() => {
+    //     if (state?.success) {
+    //         toast({
+    //             title: "Registration Successful",
+    //             description:
+    //                 "Please check your email for further instructions.",
+    //             // action: <ToastAction altText="Dismiss">Dismiss</ToastAction>,
+    //         });
+    //     }
+    // }, [state]);
 
     return (
         <div className={cn("flex flex-col gap-6 ", className)} {...props}>
             <Card className="overflow-hidden">
                 <CardContent className="grid p-0 md:grid-cols-2">
                     <div className="flex flex-col gap-6 pb-6">
-                        <Form
-                            action={registerAction}
-                            className="p-6 md:p-8 gap-6"
-                        >
+                        <Form action="" className="p-6 md:p-8 gap-6">
                             <div className="flex flex-col gap-6">
                                 <div className="flex flex-col items-center text-center">
                                     <h1 className="text-2xl font-bold">
@@ -60,11 +52,11 @@ export function RegisterForm({
                                         placeholder="m@example.com"
                                         required
                                     />
-                                    {state?.errors?.email && (
+                                    {/* {state?.errors?.email && (
                                         <p className="text-red-500 text-sm">
                                             {state.errors.email}
                                         </p>
-                                    )}
+                                    )} */}
                                 </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="password">Password</Label>
@@ -73,11 +65,11 @@ export function RegisterForm({
                                         type="password"
                                         required
                                     />
-                                    {state?.errors?.password && (
+                                    {/* {state?.errors?.password && (
                                         <p className="text-red-500 text-sm">
                                             {state.errors.password}
                                         </p>
-                                    )}
+                                    )} */}
                                 </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="password">
@@ -88,11 +80,11 @@ export function RegisterForm({
                                         type="password"
                                         required
                                     />
-                                    {state?.errors?.confirm_password && (
+                                    {/* {state?.errors?.confirm_password && (
                                         <p className="text-red-500 text-sm">
                                             {state.errors.confirm_password}
                                         </p>
-                                    )}
+                                    )} */}
                                 </div>
                                 <Button type="submit" className="w-full">
                                     Create Account

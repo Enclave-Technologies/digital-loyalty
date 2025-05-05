@@ -8,20 +8,16 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Form from "next/form";
 import Link from "next/link";
-import { useActionState } from "react";
-import { loginWithEmail } from "@/firebase/auth";
 
 export function LoginForm({
     className,
     ...props
 }: React.ComponentProps<"div">) {
-    const [state, loginAction] = useActionState(loginWithEmail, undefined);
-
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card className="overflow-hidden">
                 <CardContent className="grid p-0 md:grid-cols-2">
-                    <Form action={loginAction} className="p-6 md:p-8">
+                    <Form action="" className="p-6 md:p-8">
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-col items-center text-center">
                                 <h1 className="text-2xl font-bold">
@@ -39,11 +35,11 @@ export function LoginForm({
                                     placeholder="m@example.com"
                                     required
                                 />
-                                {state?.errors?.email && (
+                                {/* {state?.errors?.email && (
                                     <p className="text-red-500 text-sm">
                                         {state.errors.email}
                                     </p>
-                                )}
+                                )} */}
                             </div>
                             <div className="grid gap-2">
                                 <div className="flex items-center">
@@ -60,11 +56,11 @@ export function LoginForm({
                                     type="password"
                                     required
                                 />
-                                {state?.errors?.password && (
+                                {/* {state?.errors?.password && (
                                     <p className="text-red-500 text-sm">
                                         {state.errors.password}
                                     </p>
-                                )}
+                                )} */}
                             </div>
                             <Button type="submit" className="w-full">
                                 Login

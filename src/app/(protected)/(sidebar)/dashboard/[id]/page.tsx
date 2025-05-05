@@ -1,8 +1,5 @@
-import handler from "@/firebase/firebase-admin";
-
 export default async function Page({ params }: DashboardParams) {
     const id = (await params).id;
-    await handler();
 
     return (
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
