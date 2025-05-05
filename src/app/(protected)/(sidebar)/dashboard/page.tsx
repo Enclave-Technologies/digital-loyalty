@@ -22,11 +22,11 @@ import {
     ArrowUp,
     Users,
     Gift,
-    Activity,
-    TrendingUp,
+    // Activity,
+    // TrendingUp,
     AlertCircle,
     DollarSign,
-    Clock,
+    // Clock,
 } from "lucide-react";
 import {
     LineChart,
@@ -40,8 +40,8 @@ import {
     PieChart,
     Pie,
     Cell,
-    Legend,
-    PieLabelRenderProps,
+    // Legend,
+    // PieLabelRenderProps,
 } from "recharts";
 
 // Sample data - replace with actual data from your API
@@ -116,7 +116,7 @@ const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
 
 const COLORS = ["#4f46e5", "#06b6d4", "#8b5cf6", "#ec4899"];
 
-const RADIAN = Math.PI / 180;
+// const RADIAN = Math.PI / 180;
 // const renderCustomizedLabel = (props: PieLabelRenderProps) => {
 //     const {
 //         cx = 0,
