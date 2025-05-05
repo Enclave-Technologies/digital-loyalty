@@ -9,13 +9,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - [x] Configure TypeScript
 - [x] Set up TailwindCSS
 - [x] Configure ESLint
-- [ ] Set up CI/CD pipeline
-- [ ] Configure environment variables
+- [x] Set up CI/CD pipeline
+- [x] Configure environment variables
 - [ ] Set up error monitoring (Sentry)
 - [ ] Set up analytics (Vercel Analytics/Google Analytics)
 
 ### Authentication
-- [ ] Migrate from Firebase to Supabase
+- [ ] Migrate from Firebase to Convex
 - [ ] Login page
 - [ ] Registration page
 - [ ] Password reset flow
@@ -61,7 +61,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - [ ] Toast notifications
 
 ### Database & Backend
-- [ ] Set up Supabase tables
+- [ ] Set up Convex tables
 - [ ] Configure Row Level Security
 - [ ] Create database indexes
 - [ ] Set up database triggers
