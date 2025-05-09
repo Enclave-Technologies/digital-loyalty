@@ -6,7 +6,10 @@ import {
     BookOpen,
     Bot,
     Command,
+    CreditCard,
     GalleryVerticalEnd,
+    LayoutTemplate,
+    PlusCircle,
     Settings2,
     SquareTerminal,
 } from "lucide-react";
@@ -62,6 +65,28 @@ const data = {
                 },
             ],
         },
+        {
+            title: "Loyalty Cards",
+            url: "#",
+            icon: CreditCard,
+            items: [
+              {
+                title: "Templates",
+                url: "/business-onboarding",
+                icon: LayoutTemplate,
+              },
+              {
+                title: "Create New",
+                url: "/business-onboarding/edit/new",
+                icon: PlusCircle,
+              },
+              {
+                title: "History",
+                url: "#",
+                icon: History,
+              },
+            ],
+          },
         {
             title: "Programs",
             url: "#",
