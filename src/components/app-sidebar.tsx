@@ -3,15 +3,13 @@
 import * as React from "react";
 import {
     AudioWaveform,
-    BookOpen,
-    Bot,
+    BarChart,
     Command,
-    CreditCard,
     GalleryVerticalEnd,
-    LayoutTemplate,
-    PlusCircle,
-    Settings2,
-    SquareTerminal,
+    Gift,
+    Medal,
+    ShoppingCart,
+    Users,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -46,110 +44,51 @@ const data = {
     ],
     navMain: [
         {
-            title: "Customers",
-            url: "#",
-            icon: SquareTerminal,
-            isActive: true,
+            title: "Members",
+            icon: Users, // New icon
+            url: "/members",
             items: [
-                {
-                    title: "History",
-                    url: "#",
-                },
-                {
-                    title: "Starred",
-                    url: "#",
-                },
-                {
-                    title: "Settings",
-                    url: "#",
-                },
+                { title: "Directory", url: "/members" },
+                { title: "Activity Feed", url: "/members/activity" },
+                { title: "Segments", url: "/members/segments" },
             ],
         },
-        {
-            title: "Loyalty Cards",
-            url: "#",
-            icon: CreditCard,
-            items: [
-              {
-                title: "Templates",
-                url: "/business-onboarding",
-                icon: LayoutTemplate,
-              },
-              {
-                title: "Create New",
-                url: "/business-onboarding/edit/new",
-                icon: PlusCircle,
-              },
-              {
-                title: "History",
-                url: "#",
-                icon: History,
-              },
-            ],
-          },
         {
             title: "Programs",
-            url: "#",
-            icon: Bot,
+            icon: Medal, // Updated icon
+            url: "/programs",
             items: [
-                {
-                    title: "Genesis",
-                    url: "#",
-                },
-                {
-                    title: "Explorer",
-                    url: "#",
-                },
-                {
-                    title: "Quantum",
-                    url: "#",
-                },
+                { title: "Current Program", url: "/programs/current" },
+                { title: "Tier Settings", url: "/programs/tiers" },
+                { title: "Rules Builder", url: "/programs/rules" },
             ],
         },
         {
-            title: "Transactions",
-            url: "#",
-            icon: BookOpen,
+            title: "Rewards",
+            icon: Gift,
+            url: "/rewards",
             items: [
-                {
-                    title: "Introduction",
-                    url: "#",
-                },
-                {
-                    title: "Get Started",
-                    url: "#",
-                },
-                {
-                    title: "Tutorials",
-                    url: "#",
-                },
-                {
-                    title: "Changelog",
-                    url: "#",
-                },
+                { title: "Reward Catalog", url: "/rewards" },
+                { title: "Digital Rewards", url: "/rewards/digital" },
+                { title: "Physical Rewards", url: "/rewards/physical" },
             ],
         },
         {
-            title: "Settings",
-            url: "#",
-            icon: Settings2,
+            title: "Redemptions",
+            icon: ShoppingCart,
+            url: "/redemptions",
             items: [
-                {
-                    title: "General",
-                    url: "#",
-                },
-                {
-                    title: "Team",
-                    url: "#",
-                },
-                {
-                    title: "Billing",
-                    url: "#",
-                },
-                {
-                    title: "Limits",
-                    url: "#",
-                },
+                { title: "Recent Activity", url: "/redemptions" },
+                { title: "Approval Queue", url: "/redemptions/approvals" },
+            ],
+        },
+        {
+            title: "Analytics",
+            icon: BarChart,
+            url: "/analytics",
+            items: [
+                { title: "Dashboard", url: "/analytics" },
+                { title: "Custom Reports", url: "/analytics/reports" },
             ],
         },
     ],
