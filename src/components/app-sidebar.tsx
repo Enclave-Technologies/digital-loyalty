@@ -3,11 +3,14 @@
 import * as React from "react";
 import {
     AudioWaveform,
+    BadgePercent,
     BarChart,
     Command,
     GalleryVerticalEnd,
     Gift,
+    Home,
     Medal,
+    Settings,
     ShoppingCart,
     Users,
 } from "lucide-react";
@@ -44,23 +47,37 @@ const data = {
     ],
     navMain: [
         {
-            title: "Members",
-            icon: Users, // New icon
-            url: "/members",
+            title: "Dashboard",
+            icon: BarChart,
+            url: "/analytics",
+            items: [{ title: "Dashboard", url: "/analytics" }],
+        },
+        {
+            title: "Stores",
+            icon: Home,
+            url: "/stores",
             items: [
-                { title: "Directory", url: "/members" },
-                { title: "Activity Feed", url: "/members/activity" },
-                { title: "Segments", url: "/members/segments" },
+                { title: "All Stores", url: "/stores" },
+                { title: "Add Store", url: "/stores/new" },
             ],
         },
         {
-            title: "Programs",
-            icon: Medal, // Updated icon
-            url: "/programs",
+            title: "Customers",
+            icon: Users,
+            url: "/customers",
             items: [
-                { title: "Current Program", url: "/programs/current" },
-                { title: "Tier Settings", url: "/programs/tiers" },
-                { title: "Rules Builder", url: "/programs/rules" },
+                { title: "Customer List", url: "/customers" },
+                { title: "Add Customer", url: "/customers/new" },
+            ],
+        },
+        {
+            title: "Loyalty Program",
+            icon: Medal,
+            url: "/program",
+            items: [
+                { title: "Program Settings", url: "/program/settings" },
+                { title: "Stamp Rules", url: "/program/stamps" },
+                { title: "Expiry Settings", url: "/program/expiry" },
             ],
         },
         {
@@ -68,9 +85,8 @@ const data = {
             icon: Gift,
             url: "/rewards",
             items: [
-                { title: "Reward Catalog", url: "/rewards" },
-                { title: "Digital Rewards", url: "/rewards/digital" },
-                { title: "Physical Rewards", url: "/rewards/physical" },
+                { title: "Reward List", url: "/rewards" },
+                { title: "Add Reward", url: "/rewards/new" },
             ],
         },
         {
@@ -78,17 +94,26 @@ const data = {
             icon: ShoppingCart,
             url: "/redemptions",
             items: [
-                { title: "Recent Activity", url: "/redemptions" },
-                { title: "Approval Queue", url: "/redemptions/approvals" },
+                { title: "Pending Approvals", url: "/redemptions/approvals" },
+                { title: "History", url: "/redemptions/history" },
             ],
         },
         {
-            title: "Analytics",
-            icon: BarChart,
-            url: "/analytics",
+            title: "Team Settings",
+            icon: Settings,
+            url: "/settings/team",
             items: [
-                { title: "Dashboard", url: "/analytics" },
-                { title: "Custom Reports", url: "/analytics/reports" },
+                { title: "Manage Users", url: "/settings/team/users" },
+                { title: "Roles & Permissions", url: "/settings/team/roles" },
+            ],
+        },
+        {
+            title: "Passes",
+            icon: BadgePercent,
+            url: "/passes",
+            items: [
+                { title: "Issued Passes", url: "/passes" },
+                { title: "Sign-Up Settings", url: "/passes/settings" },
             ],
         },
     ],
