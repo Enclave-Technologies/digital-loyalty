@@ -3,15 +3,11 @@
 import * as React from "react";
 import {
     AudioWaveform,
-    BadgePercent,
     BarChart,
     Command,
     GalleryVerticalEnd,
-    Gift,
     Home,
     Medal,
-    Settings,
-    ShoppingCart,
     Users,
 } from "lucide-react";
 
@@ -53,68 +49,26 @@ const data = {
             items: [{ title: "Dashboard", url: "/analytics" }],
         },
         {
-            title: "Stores",
+            title: "Businesses",
             icon: Home,
-            url: "/stores",
+            url: "/businesses",
             items: [
-                { title: "All Stores", url: "/stores" },
-                { title: "Add Store", url: "/stores/new" },
+                { title: "All Businesses", url: "/businesses" },
+                { title: "Add Business", url: "/add-business/0" },
+                { title: "Business Onboarding", url: "/business-onboarding" },
             ],
         },
         {
             title: "Customers",
             icon: Users,
             url: "/customers",
-            items: [
-                { title: "Customer List", url: "/customers" },
-                { title: "Add Customer", url: "/customers/new" },
-            ],
+            items: [{ title: "Customer List", url: "/customers" }],
         },
         {
-            title: "Loyalty Program",
+            title: "Loyalty Programs",
             icon: Medal,
-            url: "/program",
-            items: [
-                { title: "Program Settings", url: "/program/settings" },
-                { title: "Stamp Rules", url: "/program/stamps" },
-                { title: "Expiry Settings", url: "/program/expiry" },
-            ],
-        },
-        {
-            title: "Rewards",
-            icon: Gift,
-            url: "/rewards",
-            items: [
-                { title: "Reward List", url: "/rewards" },
-                { title: "Add Reward", url: "/rewards/new" },
-            ],
-        },
-        {
-            title: "Redemptions",
-            icon: ShoppingCart,
-            url: "/redemptions",
-            items: [
-                { title: "Pending Approvals", url: "/redemptions/approvals" },
-                { title: "History", url: "/redemptions/history" },
-            ],
-        },
-        {
-            title: "Team Settings",
-            icon: Settings,
-            url: "/settings/team",
-            items: [
-                { title: "Manage Users", url: "/settings/team/users" },
-                { title: "Roles & Permissions", url: "/settings/team/roles" },
-            ],
-        },
-        {
-            title: "Passes",
-            icon: BadgePercent,
-            url: "/passes",
-            items: [
-                { title: "Issued Passes", url: "/passes" },
-                { title: "Sign-Up Settings", url: "/passes/settings" },
-            ],
+            url: "/programs",
+            items: [{ title: "All Programs", url: "/programs" }],
         },
     ],
 };
