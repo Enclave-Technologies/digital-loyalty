@@ -20,6 +20,19 @@ export type SerializableConvexUser = {
     email: string;
     phoneNumber?: string;
     onboardingComplete: boolean;
+
+    // Additional fields
+    createdAt: number;
+    updatedAt: number;
+    profilePictureUrl?: string;
+    bio?: string;
+    location?: string;
+    preferredLanguage?: string;
+    timeZone?: string;
+    lastActiveAt?: number;
+    isSuspended: boolean;
+    role: string;
+    phoneNumberVerified: boolean;
 };
 
 export async function requireAuth() {
