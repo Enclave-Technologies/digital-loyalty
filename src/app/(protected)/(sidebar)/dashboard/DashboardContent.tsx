@@ -43,114 +43,19 @@ import {
     // Legend,
     // PieLabelRenderProps,
 } from "recharts";
+import { dummyLoyaltyType, DummyTransactionType } from "./page";
 
-// Sample data - replace with actual data from your API
-const dummyTransactions = Array.from({ length: 50 }, (_, i) => ({
-    id: i + 1,
-    date: new Date(Date.now() - i * 86400000).toLocaleDateString(),
-    description: `Transaction ${i + 1}`,
-    amount: (Math.random() * 1000).toFixed(2),
-    status: i % 2 === 0 ? "Completed" : "Pending",
-}));
+const DashboardContent = ({
+    loyaltyData,
+    dummyTransactions,
+}: {
+    loyaltyData: dummyLoyaltyType;
+    dummyTransactions: DummyTransactionType;
+}) => {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
 
-// Sample loyalty program data
-const loyaltyData = {
-    totalActiveMembers: 1200,
-    newMembers: 85,
-    newMembersGrowth: 15, // percentage
-    churnRate: 3.2,
-    pointsIssued: 45000,
-    pointsRedeemed: 32000,
-    redemptionRate: 71, // percentage
-    activeMembersByPeriod: [820, 850, 900, 950, 1050, 1150, 1200],
-    avgPointsEarned: 450,
-    avgPointsRedeemed: 320,
-    tierDistribution: [
-        { name: "Bronze", value: 65 },
-        { name: "Silver", value: 25 },
-        { name: "Gold", value: 8 },
-        { name: "Platinum", value: 2 },
-    ],
-    popularRewards: [
-        { name: "Free Coffee", redemptions: 120 },
-        { name: "10% Discount", redemptions: 85 },
-        { name: "Free Dessert", redemptions: 65 },
-        { name: "Free Delivery", redemptions: 45 },
-        { name: "BOGO Offer", redemptions: 30 },
-    ],
-    unpopularRewards: [
-        { name: "Branded Mug", redemptions: 10 },
-        { name: "Keychain", redemptions: 15 },
-        { name: "Gift Wrapping", redemptions: 5 },
-    ],
-    pointsSpentByReward: [
-        { name: "Free Coffee", points: 12000, value: 12000 },
-        { name: "10% Discount", points: 9000, value: 9000 },
-        { name: "Free Dessert", points: 6000, value: 6000 },
-        { name: "Free Delivery", points: 3000, value: 3000 },
-        { name: "BOGO Offer", points: 2000, value: 2000 },
-    ],
-    acquisitionCost: 15.5,
-    referrals: 25,
-    retentionRate: 85,
-    lifetimeValue: {
-        loyalty: 1200,
-        nonLoyalty: 800,
-    },
-    highPointsBalance: 20,
-    lowEngagementSegments: [
-        { name: "Inactive 3+ months", percentage: 15 },
-        { name: "Low purchase frequency", percentage: 10 },
-    ],
-    sentimentScore: 4.2,
-    feedbackKeywords: [
-        { text: "easy", value: 10 },
-        { text: "rewards", value: 8 },
-        { text: "coffee", value: 6 },
-        { text: "variety", value: 4 },
-        { text: "discount", value: 3 },
-    ],
-};
+    const COLORS = ["#4f46e5", "#06b6d4", "#8b5cf6", "#ec4899"];
 
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
-
-const COLORS = ["#4f46e5", "#06b6d4", "#8b5cf6", "#ec4899"];
-
-// const RADIAN = Math.PI / 180;
-// const renderCustomizedLabel = (props: PieLabelRenderProps) => {
-//     const {
-//         cx = 0,
-//         cy = 0,
-//         midAngle = 0,
-//         innerRadius = 0,
-//         outerRadius = 0,
-//         percent = 0,
-//         index = 0,
-//     } = props;
-//     const cxNum = Number(cx);
-//     const cyNum = Number(cy);
-//     const midAngleNum = Number(midAngle);
-//     const innerRadiusNum = Number(innerRadius);
-//     const outerRadiusNum = Number(outerRadius);
-//     const percentNum = Number(percent);
-//     const radius = innerRadiusNum + (outerRadiusNum - innerRadiusNum) * 0.5;
-//     const x = cxNum + radius * Math.cos(-midAngleNum * RADIAN);
-//     const y = cyNum + radius * Math.sin(-midAngleNum * RADIAN);
-//         return (
-//             <text
-//                 x={x}
-//                 y={y}
-//                 fill="currentColor"
-//                 className="text-foreground"
-//                 textAnchor={x > cxNum ? "start" : "end"}
-//                 dominantBaseline="central"
-//             >
-//             {`${loyaltyData.tierDistribution[index].name}: ${(percentNum * 100).toFixed(0)}%`}
-//         </text>
-//     );
-// };
-
-export default function DashboardPage() {
     return (
         <div className="p-6">
             <div className="flex justify-between items-center mb-8">
@@ -1013,4 +918,6 @@ export default function DashboardPage() {
             </Card>
         </div>
     );
-}
+};
+
+export default DashboardContent;

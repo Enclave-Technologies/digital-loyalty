@@ -14,6 +14,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as sampleConvexExample_tasks from "../sampleConvexExample/tasks.js";
+import type * as users from "../users.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -25,6 +26,7 @@ import type * as sampleConvexExample_tasks from "../sampleConvexExample/tasks.js
  */
 declare const fullApi: ApiFromModules<{
   "sampleConvexExample/tasks": typeof sampleConvexExample_tasks;
+  users: typeof users;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
