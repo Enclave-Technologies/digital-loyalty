@@ -11,6 +11,10 @@ export const createUser = mutation({
         location: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         // Check if user already exists
         const existingUser = await ctx.db
             .query("users")
@@ -55,6 +59,10 @@ export const updateUser = mutation({
         timeZone: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         const { userId, ...updates } = args;
 
         // Add updatedAt timestamp
@@ -72,6 +80,10 @@ export const updateUser = mutation({
 export const updateLastActive = mutation({
     args: { userId: v.id("users") },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         await ctx.db.patch(args.userId, {
             lastActiveAt: Date.now(),
             updatedAt: Date.now(),
@@ -82,6 +94,10 @@ export const updateLastActive = mutation({
 export const getUserByClerkId = query({
     args: { clerkId: v.string() },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         return await ctx.db
             .query("users")
             .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
@@ -92,6 +108,10 @@ export const getUserByClerkId = query({
 export const updateOnboardingStatus = mutation({
     args: { userId: v.id("users"), completed: v.boolean() },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         await ctx.db.patch(args.userId, {
             onboardingComplete: args.completed,
             updatedAt: Date.now(),
@@ -105,6 +125,10 @@ export const updateUserRole = mutation({
         role: v.string(),
     },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         await ctx.db.patch(args.userId, {
             role: args.role,
             updatedAt: Date.now(),
@@ -118,6 +142,10 @@ export const suspendUser = mutation({
         isSuspended: v.boolean(),
     },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         await ctx.db.patch(args.userId, {
             isSuspended: args.isSuspended,
             updatedAt: Date.now(),
@@ -128,6 +156,10 @@ export const suspendUser = mutation({
 export const verifyPhoneNumber = mutation({
     args: { userId: v.id("users") },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         await ctx.db.patch(args.userId, {
             phoneNumberVerified: true,
             updatedAt: Date.now(),

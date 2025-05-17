@@ -7,6 +7,10 @@ export const createBusiness = mutation({
         name: v.string(),
     },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         // Get user ID from clerk ID
         const user = await ctx.db
             .query("users")
@@ -28,6 +32,10 @@ export const createBusiness = mutation({
 export const getBusinessesByUserId = query({
     args: { userId: v.id("users") },
     handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (identity === null) {
+            throw new Error("Not authenticated");
+        }
         return await ctx.db
             .query("businesses")
             .withIndex("by_user_id", (q) => q.eq("userId", args.userId))
