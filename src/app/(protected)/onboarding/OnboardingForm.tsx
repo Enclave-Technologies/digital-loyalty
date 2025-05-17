@@ -24,6 +24,7 @@ export default function OnboardingForm({
 }) {
     const router = useRouter();
     const [formData, setFormData] = useState({
+        fullName: userData.fullName || "",
         phoneNumber: "",
         location: "",
         bio: "",
@@ -55,7 +56,7 @@ export default function OnboardingForm({
         // Create or update user
         const userId = await createUser({
             clerkId: userData.id,
-            fullName: userData.fullName || "",
+            fullName: formData.fullName,
             email: userData.email || "",
             phoneNumber: formData.phoneNumber,
             profilePictureUrl: userData.imageUrl || undefined,
@@ -95,7 +96,9 @@ export default function OnboardingForm({
                             </Label>
                             <Input
                                 id="fullName"
-                                defaultValue={userData.fullName || ""}
+                                name="fullName"
+                                value={formData.fullName}
+                                onChange={handleChange}
                                 required
                                 placeholder="John Doe"
                                 className="focus:ring-2 focus:ring-destructive focus:ring-offset-1"
