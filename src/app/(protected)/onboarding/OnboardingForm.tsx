@@ -29,6 +29,7 @@ export default function OnboardingForm({
         location: "",
         bio: "",
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const createUser = useMutation(api.users.createUser);
     const updateOnboarding = useMutation(api.users.updateOnboardingStatus);
@@ -37,8 +38,15 @@ export default function OnboardingForm({
     });
     const updateUser = useMutation(api.users.updateUser);
 
-    // If user has completed onboarding, redirect to dashboard
-    if (existingUser?.onboardingComplete) {
+    // Handle loading and error states for existingUser query
+    if (existingUser === undefined) {
+        // Query is still loading, render nothing or a loading state
+        return null;
+    }
+    if (existingUser === null) {
+        // User not found or not authenticated, render form
+    } else if (existingUser.onboardingComplete) {
+        // Redirect to dashboard if onboarding is complete
         router.push("/dashboard");
         return null;
     }
@@ -52,6 +60,7 @@ export default function OnboardingForm({
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         // Create or update user
         const userId = await createUser({
@@ -74,8 +83,14 @@ export default function OnboardingForm({
         // Mark onboarding as complete
         await updateOnboarding({ userId, completed: true });
 
+        // Invalidate or refetch existingUser query to update cache
+        // This is a workaround since Convex React does not have built-in cache invalidation
+        // We can force a refetch by calling useQuery again or by other means if available
+        // For now, we will just wait a short delay before redirecting
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         // Redirect to business creation
-        router.push("/business-onboarding/edit");
+        router.push("/business-onboarding");
     };
 
     return (
@@ -158,8 +173,8 @@ export default function OnboardingForm({
                             fields
                         </p>
 
-                        <Button type="submit" className="w-full">
-                            Continue to Business Setup
+                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                            {isSubmitting ? "Submitting..." : "Continue to Business Setup"}
                         </Button>
                     </form>
                 </CardContent>

@@ -95,6 +95,9 @@ export const getUserByClerkId = query({
     args: { clerkId: v.string() },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
+
+        console.log("identity", identity);
+
         if (identity === null) {
             throw new Error("Not authenticated");
         }

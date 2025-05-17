@@ -128,6 +128,9 @@ export default async function DashboardPage() {
     // This will redirect if user is not authenticated or hasn't completed onboarding
     const { user, convexUser } = await requireOnboarding();
 
+    console.log("user", user);
+    console.log("convexUser", convexUser);
+
     return (
         <DashboardContent
             loyaltyData={loyaltyData}
