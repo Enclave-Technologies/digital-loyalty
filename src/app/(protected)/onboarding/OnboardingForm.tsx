@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
@@ -38,16 +38,22 @@ export default function OnboardingForm({
     });
     const updateUser = useMutation(api.users.updateUser);
 
+    // Redirect to dashboard if onboarding is complete
+    useEffect(() => {
+        if (existingUser && existingUser.onboardingComplete) {
+            router.push("/dashboard");
+        }
+    }, [existingUser, router]);
+
     // Handle loading and error states for existingUser query
     if (existingUser === undefined) {
         // Query is still loading, render nothing or a loading state
         return null;
     }
+
     if (existingUser === null) {
         // User not found or not authenticated, render form
     } else if (existingUser.onboardingComplete) {
-        // Redirect to dashboard if onboarding is complete
-        router.push("/dashboard");
         return null;
     }
 
@@ -173,8 +179,14 @@ export default function OnboardingForm({
                             fields
                         </p>
 
-                        <Button type="submit" className="w-full" disabled={isSubmitting}>
-                            {isSubmitting ? "Submitting..." : "Continue to Business Setup"}
+                        <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting
+                                ? "Submitting..."
+                                : "Continue to Business Setup"}
                         </Button>
                     </form>
                 </CardContent>
